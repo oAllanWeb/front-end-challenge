@@ -1,10 +1,10 @@
-import styled from 'styled-components'
-
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`
+import Layout from "../components/Layout";
 
 export default function Home() {
-  return <Title>My page</Title>
+
+  return (
+    <Layout>
+      <h1>Home</h1>
+    </Layout>
+  )
 }
