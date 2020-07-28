@@ -1,10 +1,25 @@
-import Layout from "../components/Layout";
+import Link from 'next/link';
+import { get } from '../utils/API';
 
-export default function Home() {
-
+function PreactStars({genres}) {
   return (
-    <Layout>
-      <h1>Home</h1>
-    </Layout>
+    <div>
+      {genres.map((genre) =>
+        <Link href={`#${genre.id}`}>
+          <a>{genre.name}</a>
+        </Link>
+      )}
+    </div>
   )
 }
+
+export async function getStaticProps() {
+  const { genres } = await get('/genre/movie/list')
+  return {
+    props: {
+      genres,
+    },
+  }
+}
+
+export default PreactStars
